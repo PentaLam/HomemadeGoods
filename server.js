@@ -19,6 +19,9 @@ app.get('/donuts', function(req, res) {
     res.send('Donuts page');
 });
 
+app.get('/juanpage', function(req, res) {
+    res.send('Hey this is my awesome page! :D');
+});
 /**
  * Listens for user request
  * ex. 'localhost:3000' or 'localhost:3000/donuts'
