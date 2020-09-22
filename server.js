@@ -23,6 +23,10 @@ app.get('/juanpage', function(req, res) {
     res.send('Hey this is my awesome page! :D');
 });
 
+app.get('/howiepage', function(req, res) {
+    res.send('Welcome to my page.');
+});
+
 app.get('/davidpage', function(req, res) {
     res.send('Welcome to my page: UNDER CONSTRUCTION! :D');
 });
