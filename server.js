@@ -26,6 +26,10 @@ app.get('/juanpage', function(req, res) {
 app.get('/davidpage', function(req, res) {
     res.send('Welcome to my page: UNDER CONSTRUCTION! :D');
 });
+
+app.get('/arturopage', function(req, res) {
+    res.send('This is my page, Hello World!!');
+});
 /**
  * Listens for user request
  * ex. 'localhost:3000' or 'localhost:3000/donuts'
