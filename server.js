@@ -1,39 +1,40 @@
-const express = require('express');
+// modules =================================================
+var express        = require('express');
+var app            = express();
+var bodyParser     = require('body-parser');
+var methodOverride = require('method-override');
+var mongoose       = require('mongoose');
 
-const app = express();
+// configuration ===========================================
 
-const port = 3000;
+// config files
+var db = require('./config/db');
 
-/** 
- * Returns homepage
- */
-app.get('/', function(req, res, next) {
-    res.send('Homemade Goods');
-});
+// set our port
+var port = process.env.PORT || 3000; 
 
-/** 
- * ONLY USED FOR DEMONSTRATION (Delete later)
- * Returns secondary page
- */
-app.get('/donuts', function(req, res) {
-    res.send('Donuts page');
-});
+// connect to our mongoDB database 
+mongoose.connect(db.url, { useNewUrlParser: true, useUnifiedTopology: true }); 
 
-app.get('/juanpage', function(req, res) {
-    res.send('Hey this is my awesome page! :D');
-});
+// get all data/stuff of the body (POST) parameters
+// parse application/json 
+app.use(bodyParser.json()); 
 
-app.get('/howiepage', function(req, res) {
-    res.send('Welcome to my page.');
-});
+// parse applicationv/nd.api+json as json
+app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
 
-app.get('/davidpage', function(req, res) {
-    res.send('Welcome to my page: UNDER CONSTRUCTION! :D');
-});
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true })); 
 
-app.get('/arturopage', function(req, res) {
-    res.send('This is my page, Hello World!!');
-});
+// override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
+app.use(methodOverride('X-HTTP-Method-Override')); 
+
+// set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/public')); 
+
+// routes ==================================================
+require('./app/routes')(app); // configure our routes
+
 /**
  * Listens for user request
  * ex. 'localhost:3000' or 'localhost:3000/donuts'
