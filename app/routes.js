@@ -26,7 +26,7 @@ var Listing = require('./models/listing');
         // frontend routes =========================================================
         // Returns homepage
         app.get('/', function(req, res) {
-            res.sendFile('./public/views/home.html');
+            res.sendFile('index.html' , { root : __dirname + '/../public/views'});
         });
 
         app.get('/donuts', function(req, res) {
@@ -51,6 +51,6 @@ var Listing = require('./models/listing');
 
         // route to handle all requests to links that do not exist
         app.get('*', function(req, res) {
-            res.sendfile('./public/views/nonExistentPage.html');
+            res.sendFile('nonExistentPage.html' , { root : __dirname + '/../public/views'});
         });
     };
