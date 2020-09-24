@@ -16,6 +16,13 @@ var port = process.env.PORT || 3000;
 // connect to our mongoDB database 
 mongoose.connect(db.url, { useNewUrlParser: true, useUnifiedTopology: true }); 
 
+// check connection success
+const d = mongoose.connection;
+d.on('error', console.error.bind(console, 'connection error:'));
+d.once('open', function() {
+  // we're connected!
+});
+
 // get all data/stuff of the body (POST) parameters
 // parse application/json 
 app.use(bodyParser.json()); 
