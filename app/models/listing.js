@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 // Base listing model
 module.exports = mongoose.model('Listing', {
