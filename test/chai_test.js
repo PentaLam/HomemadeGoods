@@ -10,3 +10,10 @@ describe('Math', function() {
 				            });
 		        });
 });
+
+describe('ZIP Code', function() {
+	var zip = 91210
+	it('should be a zip code or a city', function() {
+		expect(zip).to.satisfy((n) => n > 0 && n < 99999)
+	});
+});
