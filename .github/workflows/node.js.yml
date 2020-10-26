@@ -27,8 +27,4 @@ jobs:
     - run: npm i
     - run: npm run build --if-present
     - run: npm test
-    - run: cd my-app
-    - run: npm i
-    - run: npm run build --if-present
-    - run: npm test
       
