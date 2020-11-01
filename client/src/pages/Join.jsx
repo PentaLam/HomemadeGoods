@@ -9,44 +9,37 @@ const Join  = () => {
             <Form.Control/>
         </Form.Group>
         <Form.Group className="w-50">
-          <Row>
             <Form.Label>Business Type</Form.Label>
-          </Row>
-          <Row>
+
             <Form.Check
             type="radio"
             label="food"
             name="businessType"
             id="food"/>
-          </Row>
-          <Row>
+
             <Form.Check
             type="radio"
             label="services"
             name="businessType"
             id="services"/>
-          </Row>
-          <Row>
+
             <Form.Check
             type="radio"
             label="craft"
             name="businessType"
             id="craft"/>
-          </Row>
-          <Row>
+
             <Form.Check
             type="radio"
             label="art"
             name="businessType"
             id="art"/>
-          </Row>
-          <Row>
+
             <Form.Check
             type="radio"
             label="other"
             name="businessType"
             id="other"/>
-          </Row>
       </Form.Group>
       <Form.Group className="w-50">
             <Form.Label>Contact Information</Form.Label>
