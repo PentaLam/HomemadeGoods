@@ -1,4 +1,4 @@
-import { Container, Row, Col, Form } from 'react-bootstrap'
+import { Container, Row, Form } from 'react-bootstrap'
 
 const Join  = () => {
     return (
@@ -8,7 +8,7 @@ const Join  = () => {
             <Form.Label>Business Name</Form.Label>
             <Form.Control/>
         </Form.Group>
-        <Form.Group>
+        <Form.Group className="w-50">
           <Row>
             <Form.Label>Business Type</Form.Label>
           </Row>
@@ -47,6 +47,23 @@ const Join  = () => {
             name="businessType"
             id="other"/>
           </Row>
+      </Form.Group>
+      <Form.Group className="w-50">
+            <Form.Label>Contact Information</Form.Label>
+            <Form.Control
+            placeholder="Phone Number, Email, etc..."/>
+        </Form.Group>
+      <Form.Group className="w-50">
+            <Form.Label>Location</Form.Label>
+            <Form.Control
+            placeholder="zip code"/>
+      </Form.Group>
+      <Form.Group className="w-50">
+          <Form.Label>Biography</Form.Label>
+          <Form.Control
+          placeholder="Tell us about yourself!"
+          as="textarea"
+          rows={3} />
       </Form.Group>
   </Form>
 </Container>
