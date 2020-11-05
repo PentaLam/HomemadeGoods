@@ -11,27 +11,27 @@ const FormPage = () => {
                 <Form.Label>Business Type</Form.Label>
                 <Form.Check
                     type="radio"
-                    label="food"
+                    label="Food"
                     name="businessType"
                     id="food" />
                 <Form.Check
                     type="radio"
-                    label="services"
+                    label="Services"
                     name="businessType"
                     id="services" />
                 <Form.Check
                     type="radio"
-                    label="craft"
+                    label="Craft"
                     name="businessType"
                     id="craft" />
                 <Form.Check
                     type="radio"
-                    label="art"
+                    label="Art"
                     name="businessType"
                     id="art" />
                 <Form.Check
                     type="radio"
-                    label="other"
+                    label="Other"
                     name="businessType"
                     id="other" />
             </Form.Group>
