@@ -1,5 +1,5 @@
 import {Container, Jumbotron, Button} from 'react-bootstrap';
-import ListingCard from '../components/ListingCard';
+//import ListingCard from '../components/ListingCard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const pStyle = {
