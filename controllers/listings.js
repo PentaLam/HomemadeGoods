@@ -14,3 +14,17 @@ exports.getListings = (req,res) => {
         })
 
 };
+
+exports.addListing = (req,res) => {
+    console.log("bazinga");
+    const body = req.body;
+    const listingObject = new listing(body);
+    console.log(body);
+    listingObject.save()
+                .then(result => {
+                    res.json(result);
+                })
+                .catch(err => {
+                    res.json(err);
+                })
+}

@@ -1,10 +1,10 @@
 import { Container} from 'react-bootstrap'
-import FormPage from '../components/FormPage';
+import ListingForm from '../components/ListingForm';
 
 const Join  = () => {
     return (
 <Container>
-      <FormPage/>
+      <ListingForm/>
 </Container>
     );
 }
