@@ -10,7 +10,7 @@ const ListingCard = (props) => {
 
     return (  
         <div>
-            <Card>
+            <Card style={{ width: '18rem' }}>
                 <Card.Body>
                     <Card.Title> {props.listing.businessName} </Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{props.listing.businessType}</Card.Subtitle>

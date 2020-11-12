@@ -2,11 +2,17 @@ import { Form, Col, Button} from 'react-bootstrap'
 import React from 'react'
 import {Redirect,withRouter} from 'react-router-dom';
 
+import '../css/style.css';
+
+
+
 //class for grabbing information
 class ListingForm extends React.Component {
 
     states = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
 
+    
+    
     submitForm = async (event) => {
         event.preventDefault();
         const url = "http://localhost:5000/api/listing"
@@ -59,6 +65,7 @@ class ListingForm extends React.Component {
 
     constructor(props) {
         super(props)
+        var selectedImageName = ""
         this.state = {
             businessName: null,
             businessType: null,
@@ -69,10 +76,22 @@ class ListingForm extends React.Component {
             zipcode: null,
             contactInfo: null,
             description: null,
-            redirect: false
-
+            redirect: false,
+            selectedImageName: "",
+            selectedImage: null
         }
     }
+
+    fileSelectedHandler = event => {
+        console.log(URL.createObjectURL(event.target.files[0]));
+        if (event.target.files[0] != null) {
+            this.setState({ selectedImage : URL.createObjectURL(event.target.files[0])})
+            this.selectedImageName = event.target.files[0].name
+        }
+            
+        
+    }
+    
     render() {
 
         if(this.state.redirect){
@@ -157,6 +176,28 @@ class ListingForm extends React.Component {
                             <Form.Control onChange={this.zipChange}/>
                         </Form.Group>
                     </Form.Row>
+                    <Form.Group>
+                        <Form.Label> Add Image </Form.Label>
+                        <div className="input-group">
+                            <div className="custom-file">
+                                <input
+                                    type="file"
+                                    className="custom-file-input"
+                                    id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01"
+                                    onChange={this.fileSelectedHandler}
+                                />
+                                <label className="custom-file-label" htmlFor="inputGroupFile01">
+                                    {this.state.selectedImage != null ? this.selectedImageName : "Choose File"}
+                                </label>
+                            </div>
+                            
+                        </div>
+                        <div class="imgcontainer">
+                            <img src = {this.state.selectedImage} width="75%" height="auto" />
+                        </div>
+                        
+                    </Form.Group>
                     <Form.Group>
                         <Form.Label>Description</Form.Label>
                         <Form.Control

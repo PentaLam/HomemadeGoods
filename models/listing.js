@@ -46,7 +46,11 @@ const listingSchema = new mongoose.Schema({
 	zipcode: {
 		type: String,
 		required: true
-	}
+	},
+	// selectedImage: {
+	// 	type: String,
+	// 	required: true
+	// }
 });
 
 module.exports = mongoose.model('Listing', listingSchema);
