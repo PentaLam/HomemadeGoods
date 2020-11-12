@@ -13,7 +13,7 @@ const mongoose = require('mongoose');
 const listingSchema = new mongoose.Schema({
 	businessName: {
 		type : String, 
-//		required : true,
+		required : true,
 	},
 	businessType: {
 		type : String,
@@ -21,31 +21,31 @@ const listingSchema = new mongoose.Schema({
 	},
 	contactInfo: {
 		type: String,
-//		required: true
+		required: true
 	},
 	description: {
 		type: String,
-//		required: true
+		required: true
 	},
 	address: {
 		type: String,
-		// required: true
+		required: true
 	},
 	address2: {
 		type: String,
-		// required: true
+		required: true
 	},
 	city: {
 		type: String,
-		// required: true
+		required: true
 	},
 	state: {
 		type: String,
-		// required: true
+		required: true
 	},
 	zipcode: {
 		type: String,
-		// required: true
+		required: true
 	}
 });
 

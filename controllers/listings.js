@@ -28,3 +28,14 @@ exports.addListing = (req,res) => {
                     res.json(err);
                 })
 }
+
+exports.getListing = (req,res) => {
+    const {id} = req.params;
+    listing.findById(id)
+        .then(listing => {
+            res.json(listing);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+}

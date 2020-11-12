@@ -1,5 +1,6 @@
 import { Form, Col, Button} from 'react-bootstrap'
 import React from 'react'
+import {Redirect,withRouter} from 'react-router-dom';
 
 //class for grabbing information
 class ListingForm extends React.Component {
@@ -10,14 +11,19 @@ class ListingForm extends React.Component {
         event.preventDefault();
         const url = "http://localhost:5000/api/listing"
 
+        const postBody = this.state;
+        delete postBody.redirect;
+
         fetch(url, {
             method: 'POST',
             mode: 'cors', // no-cors, *cors, same-origin
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(postBody)
           });
+        
+          this.setState({redirect : true});
 
     }
 
@@ -54,19 +60,25 @@ class ListingForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            businessName: "",
-            businessType: "",
-            address: "",
-            address2: "",
-            city: "",
-            state: "",
-            zipcode: "",
-            contactInfo: "",
-            description: "",
+            businessName: null,
+            businessType: null,
+            address: null,
+            address2: null,
+            city: null,
+            state: null,
+            zipcode: null,
+            contactInfo: null,
+            description: null,
+            redirect: false
 
         }
     }
     render() {
+
+        if(this.state.redirect){
+            return <Redirect to="/"/>;
+        }
+
         return(
             <div className="d-flex justify-content-center">
                 <Form onSubmit={this.submitForm} className="my-4 w-75">
@@ -159,4 +171,4 @@ class ListingForm extends React.Component {
         )
     }
 }
-export default ListingForm
+export default withRouter(ListingForm)
