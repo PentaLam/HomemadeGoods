@@ -1,6 +1,7 @@
 import {Container, Jumbotron, Button} from 'react-bootstrap';
 import ListingCard from '../components/ListingCard';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React, {useState,useEffect} from 'react';
 
 const pStyle = {
     fontSize: '15px',
@@ -9,6 +10,23 @@ const pStyle = {
   };
 
 const Home = () => {
+
+    const [listings, setListings] = useState([]);
+    useEffect(() => {
+
+       fetch("http://localhost:5000/api/listing")
+         .then(res => res.json())
+         .then(
+           (result) => {
+             setListings(result);
+           },
+           (error) => {
+               //Do error stuff
+               console.log("BROKE")
+           }
+         ) 
+     }, [])
+    
     return (  
         <div>
             <Container>
@@ -21,6 +39,11 @@ const Home = () => {
                         <Button variant="primary">Learn more</Button>
                     </p>
                 </Jumbotron>
+                {listings.map((listing) => {
+                return<ListingCard 
+                        listing={listing}
+                        ></ListingCard>
+                })}
             </Container>
         </div>
     );

@@ -7,4 +7,6 @@ router.route('/listing')
         .get(listingController.getListings)
         .post(listingController.addListing);
 
+router.get('/listing/:id', listingController.getListing)
+
 module.exports = router;
