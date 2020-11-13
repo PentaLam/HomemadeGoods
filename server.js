@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 //Middleware functions
 
-var whitelist = ['http://localhost:5000/api/listing', 'http://localhost:3000' ]
+var whitelist = ['http://localhost:5000/api/listing', 'http://localhost:3000', `http://ec2-18-216-28-255.us-east-2.compute.amazonaws.com:3000/` ]
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
