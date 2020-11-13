@@ -77,13 +77,11 @@ class ListingForm extends React.Component {
             contactInfo: null,
             description: null,
             redirect: false,
-            selectedImageName: "",
             selectedImage: null
         }
     }
 
     fileSelectedHandler = event => {
-        console.log(URL.createObjectURL(event.target.files[0]));
         if (event.target.files[0] != null) {
             this.setState({ selectedImage : URL.createObjectURL(event.target.files[0])})
             this.selectedImageName = event.target.files[0].name
