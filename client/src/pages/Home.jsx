@@ -14,7 +14,13 @@ const Home = () => {
     const [listings, setListings] = useState([]);
     useEffect(() => {
 
-       fetch("http://localhost:5000/api/listing")
+       fetch("http://localhost:5000/api/listing",{
+            method: 'GET',
+            mode: 'cors', // no-cors, *cors, same-origin
+            headers: {
+            'Content-Type': 'application/json'
+            }
+       })
          .then(res => res.json())
          .then(
            (result) => {
