@@ -15,7 +15,7 @@ class ListingForm extends React.Component {
     
     submitForm = async (event) => {
         event.preventDefault();
-        const url = "http://localhost:5000/api/listing"
+        const url = "http://" + window.location.hostname + ":5000/api/listing"
 
         const postBody = this.state;
         delete postBody.redirect;

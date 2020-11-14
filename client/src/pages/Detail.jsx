@@ -7,7 +7,9 @@ const Detail = (props) => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/api/listing/${id}`)
+        let url = "http://" + window.location.hostname + `:5000/api/listing/${id}`;
+
+        fetch(url)
           .then(res => res.json())
           .then(
             (result) => {
