@@ -1,23 +1,13 @@
 const mongoose = require('mongoose');
 
-// // Base listing model
-// module.exports = mongoose.model('Listing', {
-//     	businessName: String,
-// 	businessType: {type : String, default: 'Other'},
-// 	contactInfo: String,
-// 	location: String,
-// 	bio: String,
-// 	lastUpdated: {type: Date, default: Date.now}
-// });
-
 const listingSchema = new mongoose.Schema({
 	businessName: {
 		type : String, 
-		required : true,
+		required : true
 	},
 	businessType: {
 		type : String,
-		default: 'other',
+		default: 'other'
 	},
 	contactInfo: {
 		type: String,
@@ -29,11 +19,11 @@ const listingSchema = new mongoose.Schema({
 	},
 	address: {
 		type: String,
-		required: true
+		required: false
 	},
 	address2: {
 		type: String,
-		required: true
+		required: false
 	},
 	city: {
 		type: String,
