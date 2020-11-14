@@ -9,9 +9,56 @@ import '../css/style.css';
 //class for grabbing information
 class ListingForm extends React.Component {
 
-    states = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
+    states = ['Select','Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
 
-    
+    validate = (event) => {
+		event.preventDefault();
+		let fields = this.state;
+		let errors = {};
+		let isValid = true;
+		let nonEmptyFields = ["businessName","contactInfo","city","state","zipcode","description"];
+
+		if(fields["businessName"] && !fields["businessName"].match(/^[a-zA-Z\s]+$/)) {
+			isValid = false;
+			errors["businessName"] = "Invalid format (Letters and spaces only)";
+			}
+		if(fields["address"] && !fields["address"].match(/^[#.0-9a-zA-Z\s,-]+$/)) {
+			isValid = false;
+			errors["address"] = "Invalid format (Numbers, letters, dashes, spaces only)";
+		}
+		if(fields["address2"] && !fields["address2"].match(/^[0-9a-zA-Z\s,-]+$/)) {
+			isValid = false;
+			errors["address2"] = "Invalid format (Numbers, letters, dashes, spaces only)";
+		}
+		if(fields["city"] && !fields["city"].match(/^[a-zA-Z\s]+$/)) {
+			isValid = false;
+			errors["city"] = "Invalid format (Letters and spaces only)";
+		}
+		if(fields["zipcode"] && !fields["zipcode"].match(/^\d{5}$/)) {
+			isValid = false;
+			errors["zipcode"] = "Invalid format (10000-99999 only";
+		}
+		nonEmptyFields.forEach(field => {
+			if(!fields[field]){
+				isValid = false;
+				errors[field] = "Cannot be empty";
+			}
+		});
+		
+		if(isValid) {
+			alert("Form is valid");
+			this.submitForm(event);
+		}
+		else {
+			let s = "Form is invalid\n\n";
+			Object.keys(errors).forEach(key => {
+				if(errors[key]) {
+					s += key + ": " + errors[key]+"\n";
+				}
+			});
+		 alert(s);
+		}
+	}
     
     submitForm = async (event) => {
         event.preventDefault();
@@ -98,9 +145,9 @@ class ListingForm extends React.Component {
 
         return(
             <div className="d-flex justify-content-center">
-                <Form onSubmit={this.submitForm} className="my-4 w-75">
+                <Form onSubmit={this.validate} className="my-4 w-75">
                     <Form.Group>
-                        <Form.Label>Business Name</Form.Label>
+                        <Form.Label>Business Name *</Form.Label>
                         <Form.Control onChange={this.nameChange}/>
                     </Form.Group>
                     <Form.Group>
@@ -137,7 +184,7 @@ class ListingForm extends React.Component {
                             id="other" />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Contact Information</Form.Label>
+                        <Form.Label>Contact Information *</Form.Label>
                         <Form.Control
                             onChange={this.contactChange}
                             placeholder="Phone Number, Email, etc..." />
@@ -158,19 +205,19 @@ class ListingForm extends React.Component {
 
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridCity">
-                        <   Form.Label>City</Form.Label>
+                        <   Form.Label>City *</Form.Label>
                             <Form.Control onChange={this.cityChange}/>
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>State</Form.Label>
+                            <Form.Label>State *</Form.Label>
                             <Form.Control as="select" defaultValue="Choose..." onChange={this.stateChange}>
                                 {this.states.map((state) => <option>{state}</option>)}
                             </Form.Control>
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridZip">
-                            <Form.Label>Zip</Form.Label>
+                            <Form.Label>Zip *</Form.Label>
                             <Form.Control onChange={this.zipChange}/>
                         </Form.Group>
                     </Form.Row>
@@ -197,7 +244,7 @@ class ListingForm extends React.Component {
                         
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Description</Form.Label>
+                        <Form.Label>Description *</Form.Label>
                         <Form.Control
                             onChange={this.descriptionChange}
                             placeholder="Tell us about yourself!"
