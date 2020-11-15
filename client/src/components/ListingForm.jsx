@@ -205,7 +205,7 @@ class ListingForm extends React.Component {
 
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridCity">
-                        <   Form.Label>City *</Form.Label>
+                            <Form.Label>City *</Form.Label>
                             <Form.Control onChange={this.cityChange}/>
                         </Form.Group>
 
