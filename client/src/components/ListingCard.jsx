@@ -2,7 +2,8 @@ import {Card} from 'react-bootstrap';
 
 const ListingCard = (props) => {
 
-    let shortDescription = props.listing.description.substring(0,30)
+    const maxDescriptionLength = 70;
+    let shortDescription = props.listing.description.substring(0,maxDescriptionLength)
     let image;
     switch (props.listing.businessType) {
         case "food":
@@ -22,7 +23,7 @@ const ListingCard = (props) => {
             break;
     }
 
-    if(props.listing.description.length > 30){
+    if(props.listing.description.length > maxDescriptionLength){
         shortDescription += "...";
     }
 
