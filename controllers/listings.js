@@ -16,7 +16,7 @@ exports.getListings = (req,res) => {
 };
 
 exports.addListing = (req,res) => {
-    console.log("bazinga, A new listing has been added");
+    //console.log("bazinga, A new listing has been added");
     const body = req.body;
     const listingObject = new listing(body);
     console.log(body);
