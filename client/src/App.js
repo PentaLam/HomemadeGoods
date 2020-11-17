@@ -5,10 +5,11 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Join from './pages/Join';
 import Detail from './pages/Detail';
+import './index.css'
 
 function App() {
   return (
-    <div className="App" style={{backgroundColor:"#121212"}}>
+    <div className="App" style={{backgroundColor:"#121212", height:"100%"}}>
       <Router>
         <NavigationBar/>
         <Route exact path="/" component={Home}></Route>

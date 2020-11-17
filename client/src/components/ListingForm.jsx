@@ -251,7 +251,7 @@ class ListingForm extends React.Component {
                             as="textarea"
                             rows={3} />
                     </Form.Group>
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" style={{backgroundColor:"#3700B3", color:"#fff", border:"none"}}>Submit</Button>
                 </Form>
             </div>
         )

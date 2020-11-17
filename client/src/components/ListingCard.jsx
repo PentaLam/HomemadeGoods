@@ -27,7 +27,7 @@ const ListingCard = (props) => {
     }
 
     return (  
-        <div className="mb-3">
+        <div className="listingCard">
             <Card className="d-flex flex-row" style={{backgroundColor:"#1F1B24", color:"#fff"}}>
                 <Card.Body>
                     <Card.Title> {props.listing.businessName} </Card.Title>

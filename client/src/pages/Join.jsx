@@ -3,7 +3,7 @@ import ListingForm from '../components/ListingForm';
 
 const Join  = () => {
     return (
-<Container>
+<Container className="join-font">
       <ListingForm/>
 </Container>
     );
