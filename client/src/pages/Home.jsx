@@ -38,14 +38,19 @@ const Home = () => {
     return (  
         <div>
             <Container>
-                <Jumbotron style={{backgroundColor:"#1F1B24", color:"#fff"}}>
-                    <h1>HomeMade Goods</h1>
-                    <p style={pStyle}>
-                        Check out local business that provide the stuff you need!
-                    </p>
-                    <p>
+                <Jumbotron style={{backgroundColor:"#1F1B24", color:"#fff"}} className="d-flex justify-space-between">
+                    <div>
+                        <h1>HomeMade Goods</h1>
+                        <p style={pStyle}>
+                            Check out local business that provide the stuff you need!
+                        </p>
+                        <p>
                         <Button style={{backgroundColor:"#3700B3", color:"#fff", border:"none"}} href="/about">Learn more</Button>
-                    </p>
+                        </p>
+                    </div>
+                    <div style={{marginLeft:"30em"}}>
+                        <img style={{width:"250px", height:"250px"}} src="../images/pentalam2.png"/>
+                    </div>
                 </Jumbotron>
                 {listings.map((listing) => {
                 return<ListingCard 
