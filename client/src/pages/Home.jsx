@@ -6,7 +6,6 @@ import React, {useState,useEffect} from 'react';
 const pStyle = {
     fontSize: '15px',
     textAlign: 'left',
-    color: 'red',
   };
 
 const Home = () => {
@@ -42,10 +41,10 @@ const Home = () => {
                 <Jumbotron>
                     <h1>HomeMade Goods</h1>
                     <p style={pStyle}>
-                        Where the shit is good and the goods are better than shit.
+                        Check out local business that provide the stuff you need!
                     </p>
                     <p>
-                        <Button variant="primary">Learn more</Button>
+                        <Button variant="primary" href="/about">Learn more</Button>
                     </p>
                 </Jumbotron>
                 {listings.map((listing) => {

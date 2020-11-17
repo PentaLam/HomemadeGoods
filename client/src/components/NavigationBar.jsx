@@ -1,4 +1,4 @@
-import { Button, Nav, Navbar, Form, FormControl } from 'react-bootstrap';
+import { Nav, Navbar, Form} from 'react-bootstrap';
 
 
 const NavigationBar = () => {
@@ -8,8 +8,7 @@ const NavigationBar = () => {
                 <Navbar.Brand href="/">Homemade Goods</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="#features">Features</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
+                    <Nav.Link href="/about">About Us</Nav.Link>
                     <Nav.Link href="/join">Join</Nav.Link>
                 </Nav>
                 <Form inline>

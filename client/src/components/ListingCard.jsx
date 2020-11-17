@@ -1,4 +1,4 @@
-import {Card, Button} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 
 const ListingCard = (props) => {
 
@@ -38,7 +38,7 @@ const ListingCard = (props) => {
                     <Card.Link href={`/listing/${props.listing._id}`}>View more</Card.Link>
                 </Card.Body>
                 <div style={{margin: "auto"}} className="mr-2">
-                    <img src={image} className="w-25 h-25 float-right"></img>
+                    <img src={image} alt="icon of business type" className="w-25 h-25 float-right"></img>
                 </div>
             </Card>
         </div>
