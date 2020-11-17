@@ -5,11 +5,12 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Join from './pages/Join';
 import Detail from './pages/Detail';
+import { colorpalette } from './constants/color';
 import './index.css'
 
 function App() {
   return (
-    <div className="App" style={{backgroundColor:"#121212", height:"100%"}}>
+    <div className="App" style={{backgroundColor: colorpalette.WHITE, height:"100%"}}>
       <Router>
         <NavigationBar/>
         <Route exact path="/" component={Home}></Route>

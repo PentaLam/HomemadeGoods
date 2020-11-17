@@ -24,7 +24,7 @@ const Detail = (props) => {
     
 
     return (
-    <div style={{color: "white"}}>
+    <div style={{color: "black"}}>
       <h4>Business Name: <span>{listing.businessName}</span></h4>
       <h4>Business Type: <span>{listing.businessType}</span></h4>
       <h4>Contact Info: <span>{listing.contactInfo}</span></h4>
