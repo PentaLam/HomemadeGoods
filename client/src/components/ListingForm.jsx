@@ -112,7 +112,6 @@ class ListingForm extends React.Component {
 
     constructor(props) {
         super(props)
-        var selectedImageName = ""
         this.state = {
             businessName: null,
             businessType: null,
@@ -124,17 +123,7 @@ class ListingForm extends React.Component {
             contactInfo: null,
             description: null,
             redirect: false,
-            selectedImage: null
         }
-    }
-
-    fileSelectedHandler = event => {
-        if (event.target.files[0] != null) {
-            this.setState({ selectedImage : URL.createObjectURL(event.target.files[0])})
-            this.selectedImageName = event.target.files[0].name
-        }
-            
-        
     }
     
     render() {
@@ -221,28 +210,6 @@ class ListingForm extends React.Component {
                             <Form.Control onChange={this.zipChange}/>
                         </Form.Group>
                     </Form.Row>
-                    <Form.Group>
-                        <Form.Label> Add Image </Form.Label>
-                        <div className="input-group">
-                            <div className="custom-file">
-                                <input
-                                    type="file"
-                                    className="custom-file-input"
-                                    id="inputGroupFile01"
-                                    aria-describedby="inputGroupFileAddon01"
-                                    onChange={this.fileSelectedHandler}
-                                />
-                                <label className="custom-file-label" htmlFor="inputGroupFile01">
-                                    {this.state.selectedImage != null ? this.selectedImageName : "Choose File"}
-                                </label>
-                            </div>
-                            
-                        </div>
-                        <div class="imgcontainer">
-                            <img src = {this.state.selectedImage} width="75%" height="auto" />
-                        </div>
-                        
-                    </Form.Group>
                     <Form.Group>
                         <Form.Label>Description *</Form.Label>
                         <Form.Control
