@@ -8,7 +8,7 @@ import Detail from './pages/Detail';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor:"#121212"}}>
       <Router>
         <NavigationBar/>
         <Route exact path="/" component={Home}></Route>

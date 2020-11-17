@@ -6,19 +6,19 @@ const ListingCard = (props) => {
     let image;
     switch (props.listing.businessType) {
         case "food":
-            image = "../images/spaguetti.png"
+            image = "../images/food-white.png"
             break;
         case "services":
-            image = "../images/customer-support.png"
+            image = "../images/services-white.png"
             break;
         case "craft":
-            image = "../images/tool-box.png"
+            image = "../images/toolbox-white.png"
             break;
         case "art":
-            image = "../images/palette.png"
+            image = "../images/pallete-white.png"
             break;
         default:
-            image = "../images/idea.png"
+            image = "../images/other-white.png"
             break;
     }
 
@@ -28,14 +28,14 @@ const ListingCard = (props) => {
 
     return (  
         <div className="mb-3">
-            <Card className="d-flex flex-row">
+            <Card className="d-flex flex-row" style={{backgroundColor:"#1F1B24", color:"#fff"}}>
                 <Card.Body>
                     <Card.Title> {props.listing.businessName} </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">{props.listing.businessType}</Card.Subtitle>
+                    <Card.Subtitle  style={{color:"#fff"}}>{props.listing.businessType}</Card.Subtitle>
                     <Card.Text>
                         {shortDescription}
                     </Card.Text>
-                    <Card.Link href={`/listing/${props.listing._id}`}>View more</Card.Link>
+                    <Card.Link style={{color:"#ADD8E6"}} href={`/listing/${props.listing._id}`}>View more</Card.Link>
                 </Card.Body>
                 <div style={{margin: "auto"}} className="mr-2">
                     <img src={image} alt="icon of business type" className="w-25 h-25 float-right"></img>

@@ -38,13 +38,13 @@ const Home = () => {
     return (  
         <div>
             <Container>
-                <Jumbotron>
+                <Jumbotron style={{backgroundColor:"#1F1B24", color:"#fff"}}>
                     <h1>HomeMade Goods</h1>
                     <p style={pStyle}>
                         Check out local business that provide the stuff you need!
                     </p>
                     <p>
-                        <Button variant="primary" href="/about">Learn more</Button>
+                        <Button style={{backgroundColor:"#3700B3", color:"#fff", border:"none"}} href="/about">Learn more</Button>
                     </p>
                 </Jumbotron>
                 {listings.map((listing) => {
