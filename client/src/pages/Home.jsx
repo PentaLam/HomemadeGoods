@@ -1,12 +1,12 @@
 import {Container, Jumbotron, Button} from 'react-bootstrap';
-//import ListingCard from '../components/ListingCard';
+import ListingCard from '../components/ListingCard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useState,useEffect} from 'react';
+import { colorpalette } from '../constants/color';
 
 const pStyle = {
     fontSize: '15px',
     textAlign: 'left',
-    color: 'red',
   };
 
 const Home = () => {
@@ -39,14 +39,20 @@ const Home = () => {
     return (  
         <div>
             <Container>
-                <Jumbotron>
-                    <h1>HomeMade Goods</h1>
-                    <p style={pStyle}>
-                        Where the shit is good and the goods are better than shit.
-                    </p>
-                    <p>
-                        <Button variant="primary">Learn more</Button>
-                    </p>
+                <Jumbotron style={{backgroundColor: colorpalette.SUBBLACK, color:"#fff"}} className="d-flex justify-space-between">
+                    <div>
+                        <h1>HomeMade Goods</h1>
+                        <hr className="my-2" />
+                        <p style={pStyle}>
+                            Check out local business that provide the stuff you need!
+                        </p>
+                        <p>
+                        <Button size="lg" style={{backgroundColor: colorpalette.DARKPURPLE, color:"#fff", border:"none"}} href="/about">Learn more</Button>
+                        </p>
+                    </div>
+                    <div style={{marginLeft:"30em"}}>
+                        <img style={{width:"250px", height:"250px"}} src="../images/pentalam2.png"/>
+                    </div>
                 </Jumbotron>
                 {listings.map((listing) => {
                 return<ListingCard 

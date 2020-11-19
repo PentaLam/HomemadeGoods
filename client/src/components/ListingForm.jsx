@@ -16,7 +16,7 @@ class ListingForm extends React.Component {
 		let fields = this.state;
 		let errors = {};
 		let isValid = true;
-		let nonEmptyFields = ["businessName","contactInfo","city","state","zipcode","description"];
+		let nonEmptyFields = ["businessName","city","state","zipcode","description"];
 
 		if(fields["businessName"] && !fields["businessName"].match(/^[a-zA-Z\s]+$/)) {
 			isValid = false;
@@ -85,7 +85,8 @@ class ListingForm extends React.Component {
     address2Change = (event) => this.setState({address2 : event.currentTarget.value});
     cityChange = (event) => this.setState({city : event.currentTarget.value});
     zipChange = (event) => this.setState({zipcode : event.currentTarget.value});
-    contactChange = (event) => this.setState({contactInfo : event.currentTarget.value});
+    phoneChange = (event) => this.setState({phone : event.currentTarget.value});
+    emailChange = (event) => this.setState({email : event.currentTarget.value});
     descriptionChange = (event) => this.setState({description : event.currentTarget.value});
     stateChange = (event) => {
         let select = event.currentTarget;
@@ -112,7 +113,6 @@ class ListingForm extends React.Component {
 
     constructor(props) {
         super(props)
-        var selectedImageName = ""
         this.state = {
             businessName: null,
             businessType: null,
@@ -121,20 +121,11 @@ class ListingForm extends React.Component {
             city: null,
             state: null,
             zipcode: null,
-            contactInfo: null,
+            email: null,
+            phone: null,
             description: null,
             redirect: false,
-            selectedImage: null
         }
-    }
-
-    fileSelectedHandler = event => {
-        if (event.target.files[0] != null) {
-            this.setState({ selectedImage : URL.createObjectURL(event.target.files[0])})
-            this.selectedImageName = event.target.files[0].name
-        }
-            
-        
     }
     
     render() {
@@ -184,10 +175,16 @@ class ListingForm extends React.Component {
                             id="other" />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Contact Information *</Form.Label>
+                        <Form.Label>Email</Form.Label>
                         <Form.Control
-                            onChange={this.contactChange}
-                            placeholder="Phone Number, Email, etc..." />
+                            onChange={this.emailChange}
+                            placeholder="JohnDoe@example.com" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Phone</Form.Label>
+                        <Form.Control
+                            onChange={this.phoneChange}
+                            placeholder="123-456-7890" />
                     </Form.Group>
                     <Form.Group controlId="formGridAddress1">
                         <Form.Label>Address</Form.Label>
@@ -222,28 +219,6 @@ class ListingForm extends React.Component {
                         </Form.Group>
                     </Form.Row>
                     <Form.Group>
-                        <Form.Label> Add Image </Form.Label>
-                        <div className="input-group">
-                            <div className="custom-file">
-                                <input
-                                    type="file"
-                                    className="custom-file-input"
-                                    id="inputGroupFile01"
-                                    aria-describedby="inputGroupFileAddon01"
-                                    onChange={this.fileSelectedHandler}
-                                />
-                                <label className="custom-file-label" htmlFor="inputGroupFile01">
-                                    {this.state.selectedImage != null ? this.selectedImageName : "Choose File"}
-                                </label>
-                            </div>
-                            
-                        </div>
-                        <div class="imgcontainer">
-                            <img src = {this.state.selectedImage} width="75%" height="auto" />
-                        </div>
-                        
-                    </Form.Group>
-                    <Form.Group>
                         <Form.Label>Description *</Form.Label>
                         <Form.Control
                             onChange={this.descriptionChange}
@@ -251,7 +226,7 @@ class ListingForm extends React.Component {
                             as="textarea"
                             rows={3} />
                     </Form.Group>
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" variant="primary">Submit</Button>
                 </Form>
             </div>
         )

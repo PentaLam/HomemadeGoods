@@ -1,16 +1,17 @@
-import { Button, Nav, Navbar, Form, FormControl } from 'react-bootstrap';
+import { Nav, Navbar, Form} from 'react-bootstrap';
+import {colorpalette} from '../constants/color';
 
 
 const NavigationBar = () => {
     return (
         <div>
-            <Navbar bg="light" variant="light">
+            <Navbar style={{backgroundColor: colorpalette.GREY}} variant="dark">
+            <img style={{width:"50px", height:"50px"}} src="../images/pentalam2.png"/>
                 <Navbar.Brand href="/">Homemade Goods</Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="#features">Features</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
-                    <Nav.Link href="/join">Join</Nav.Link>
+                    <Nav.Link style={{color: colorpalette.WHITE}} href="/">Home</Nav.Link>
+                    <Nav.Link style={{color: colorpalette.WHITE}} href="/about">About Us</Nav.Link>
+                    <Nav.Link style={{color: colorpalette.WHITE}} href="/join">Join</Nav.Link>
                 </Nav>
                 <Form inline>
                 </Form>
