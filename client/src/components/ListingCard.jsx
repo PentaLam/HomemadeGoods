@@ -26,7 +26,7 @@ const ListingCard = (props) => {
             break;
         default:
             image = "../images/other-white.png"
-            backgroundColor = "HF4F4F5"
+            backgroundColor = "#F4F4F5"
             break;
     }
 
@@ -43,8 +43,7 @@ const ListingCard = (props) => {
                     <Card.Text style={{color:"#000000", font: "arial"}}>
                         {shortDescription}
                     </Card.Text>
-                    <Button variant="primary" href={`/listing/${props.listing._id}`}> View More </Button>
-                    {/* <Card.Link style={{color:"#ADD8E6"}} href={`/listing/${props.listing._id}`}>View more</Card.Link> */}
+                    <Button variant="primary" onClick={props.populateModal}> View More </Button>
                 </Card.Body>
                 <div style={{margin: "auto"}} className="mr-2">
                     <img src={image} alt="icon of business type" className="w-25 h-25 float-right"></img>
