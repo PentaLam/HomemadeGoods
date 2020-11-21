@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Join from './pages/Join';
-import Detail from './pages/Detail';
 import { colorpalette } from './constants/color';
 import './index.css'
 
@@ -16,7 +15,6 @@ function App() {
         <Route exact path="/" component={Home}></Route>
         <Route path="/about" component={About}></Route>
         <Route path="/join" component={Join}></Route>
-        <Route path="/listing/:id" render={props => <Detail {...props}/>}></Route>
       </Router>
     </div>
   );
