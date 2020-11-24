@@ -13,12 +13,13 @@ const pStyle = {
   
 const containerStyle = {
 	width: '400px',
-	height: '400px'
+	height: '400px',
+	align: 'center'
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523
+  lat: 34.0589,
+  lng: -117.8194
 };
 
 const Home = () => {
@@ -130,19 +131,21 @@ const Home = () => {
 					</Form>
 				</div>
 				
-				<div className="d-flex justify-space-between">
-					<LoadScript googleMapsApiKey="AIzaSyDhIkEOGofsZP8xn6MYoxkwHkP7WBmieMs">
-					  <GoogleMap
-						mapContainerStyle={containerStyle}
-						center={center}
-						zoom={10}
-						onLoad={onLoad}
-						onUnmount={onUnmount}
-					  >
-						{ /* Child components, such as markers, info windows, etc. */ }
-						<></>
-					  </GoogleMap>
-					</LoadScript>
+				<div id="outer" className="d-flex justify-space-between mb-4">
+					<div id="inner">
+						<LoadScript googleMapsApiKey="AIzaSyDhIkEOGofsZP8xn6MYoxkwHkP7WBmieMs">
+						  <GoogleMap
+							mapContainerStyle={containerStyle}
+							center={center}
+							zoom={10}
+							onLoad={onLoad}
+							onUnmount={onUnmount}
+						  >
+							{ /* Child components, such as markers, info windows, etc. */ }
+							<></>
+						  </GoogleMap>
+						</LoadScript>
+					</div>
 				</div>
 
 				{listings.map((listing) => {
