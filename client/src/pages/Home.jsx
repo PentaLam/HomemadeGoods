@@ -107,7 +107,7 @@ const Home = () => {
 			<Container>
                 <Jumbotron style={{backgroundColor: colorpalette.SUBBLACK, color:"#fff"}} className="d-flex justify-space-between">
                     <div>
-                        <h1>HomeMade Goods</h1>
+                        <h1>Homemade Goods</h1>
                         <hr className="my-2" />
                         <p style={pStyle}>
                             Check out local businesses that provide the stuff you need!
@@ -127,7 +127,7 @@ const Home = () => {
 							<Form.Label>Enter <i><b>[City, State]</b></i> or <b><i>[Zip]</i></b> </Form.Label>
 							<Form.Control/>
 						</Form.Group>
-						<Button type="submit" variant="primary">Submit</Button>
+						<Button type="submit" variant="primary" disabled="true">Submit</Button>
 					</Form>
 				</div>
 				
@@ -171,9 +171,9 @@ const businessColor = (type) => {
     case "craft":
         return colorpalette.LIGHTSKYBLUE
     case "art":
-        return "#D9E21D"
+        return "#fff875"
     default:
-        return "#F4F4F5"
+        return "#dedede"
   }
 }
 

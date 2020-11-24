@@ -22,11 +22,11 @@ const ListingCard = (props) => {
             break;
         case "art":
             image = "../images/pallete.png"
-            backgroundColor = "#D9E21D"
+            backgroundColor = "#fff875"
             break;
         default:
             image = "../images/other.png"
-            backgroundColor = "#F4F4F5"
+            backgroundColor = "#dedede"
             break;
     }
 
