@@ -9,23 +9,23 @@ const ListingCard = (props) => {
     let backgroundColor; 
     switch (props.listing.businessType) {
         case "food":
-            image = "../images/food-white.png"
+            image = "../images/food.png"
             backgroundColor = colorpalette.CORAL
             break;
         case "services":
-            image = "../images/services-white.png"
+            image = "../images/services.png"
             backgroundColor = colorpalette.LIGHTGREEN
             break;
         case "craft":
-            image = "../images/toolbox-white.png"
+            image = "../images/toolbox.png"
             backgroundColor = colorpalette.LIGHTSKYBLUE
             break;
         case "art":
-            image = "../images/pallete-white.png"
+            image = "../images/pallete.png"
             backgroundColor = "#D9E21D"
             break;
         default:
-            image = "../images/other-white.png"
+            image = "../images/other.png"
             backgroundColor = "#F4F4F5"
             break;
     }
