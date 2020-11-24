@@ -18,9 +18,9 @@ class ListingForm extends React.Component {
 		let isValid = true;
 		let nonEmptyFields = ["businessName","city","state","zipcode","description"];
 
-		if(fields["businessName"] && !fields["businessName"].match(/^[a-zA-Z\s]+$/)) {
+		if(fields["businessName"] && !fields["businessName"].match(/^[a-zA-Z\s\']+$/)) {
 			isValid = false;
-			errors["businessName"] = "Invalid format (Letters and spaces only)";
+			errors["businessName"] = "Invalid format (Letters, apostrophes, and spaces only)";
 			}
 		if(fields["address"] && !fields["address"].match(/^[#.0-9a-zA-Z\s,-]+$/)) {
 			isValid = false;
@@ -44,9 +44,7 @@ class ListingForm extends React.Component {
 				errors[field] = "Cannot be empty";
 			}
 		});
-		
 		if(isValid) {
-			alert("Form is valid");
 			this.submitForm(event);
 		}
 		else {
@@ -181,7 +179,7 @@ class ListingForm extends React.Component {
                             placeholder="JohnDoe@example.com" />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Phone</Form.Label>
+                        <Form.Label>Phone *</Form.Label>
                         <Form.Control
                             onChange={this.phoneChange}
                             placeholder="123-456-7890" />
