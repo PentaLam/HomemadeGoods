@@ -15,7 +15,6 @@ const Home = () => {
     const [listings, setListings] = useState([]);
     const [modalShow, setModalShow] = useState(false);
     const [modalListing, setModalListing] = useState({});
-    const [mapListings, setMapListings] = useState([]);
 
     const populateModal = (listing) => {
       setModalListing(listing);
@@ -63,7 +62,7 @@ const Home = () => {
                         <img style={{width:"250px", height:"250px"}} alt="Pentalam-Logo" src="../images/pentalam2.png"/>
                     </div>
                 </Jumbotron>
-                {(mapListings.length === 0 ? listings : mapListings).map((listing) => {
+                {listings.map((listing) => {
                 return<ListingCard 
                         listing={listing}
                         populateModal={() => populateModal(listing)}
