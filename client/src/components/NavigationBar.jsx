@@ -6,7 +6,7 @@ const NavigationBar = () => {
     return (
         <div>
             <Navbar style={{backgroundColor: colorpalette.GREY}} variant="dark">
-            <img style={{width:"50px", height:"50px"}} src="../images/pentalam2.png"/>
+            <img alt="Pentalam Logo" style={{width:"50px", height:"50px"}} src="../images/pentalam2.png"/>
                 <Navbar.Brand href="/">Homemade Goods</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link style={{color: colorpalette.WHITE}} href="/">Home</Nav.Link>

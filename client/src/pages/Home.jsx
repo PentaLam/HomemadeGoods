@@ -1,9 +1,10 @@
-import {Container, Jumbotron, Button, Form} from 'react-bootstrap';
+import {Container, Jumbotron, Button, Modal, Form} from 'react-bootstrap';
 import ListingCard from '../components/ListingCard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useState,useEffect} from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { colorpalette } from '../constants/color';
+import '../css/style.css'
 
 const pStyle = {
     fontSize: '15px',
@@ -24,10 +25,16 @@ const Home = () => {
 	var coordList = {};
 	var map;
     const [listings, setListings] = useState([]);
+    const [modalShow, setModalShow] = useState(false);
+    const [modalListing, setModalListing] = useState({});
+    const populateModal = (listing) => {
+      setModalListing(listing);
+      setModalShow(true);
+    }
     
 	function pog() {
 
-       let url = "http://" + window.location.hostname + ":5000/api/listing";
+       const url = "http://" + window.location.hostname + ":5000/api/listing";
 
        fetch(url,{
             method: 'GET',
@@ -39,7 +46,6 @@ const Home = () => {
          .then(res => res.json())
          .then(
            (result) => {
-               console.log(url);
              setListings(result);
 				 result.forEach(n => {
 					 coordList[n.businessName] = n.zipcode;
@@ -110,7 +116,7 @@ const Home = () => {
                         </p>
                     </div>
                     <div style={{marginLeft:"30em"}}>
-                        <img style={{width:"250px", height:"250px"}} src="../images/pentalam2.png"/>
+                        <img style={{width:"250px", height:"250px"}} alt="Pentalam-Logo" src="../images/pentalam2.png"/>
                     </div>
                 </Jumbotron>
 
@@ -142,11 +148,71 @@ const Home = () => {
 				{listings.map((listing) => {
                 return<ListingCard 
                         listing={listing}
+                        populateModal={() => populateModal(listing)}
                         ></ListingCard>
                 })}
+
+                <DetailModal show={modalShow} onHide={() => setModalShow(false)} listing={modalListing}/>
+
             </Container>
         </div>
     );
+}
+
+const businessColor = (type) => {
+  switch (type) {
+    case "food":
+        return colorpalette.CORAL
+    case "services":
+        return colorpalette.LIGHTGREEN
+    case "craft":
+        return colorpalette.LIGHTSKYBLUE
+    case "art":
+        return "#D9E21D"
+    default:
+        return "#F4F4F5"
+  }
+}
+
+const DetailModal = (props) => {
+
+    const modalColor = businessColor(props.listing.businessType);
+
+    const listIfNonEmpty = (prefix, data) => (data === null || data === "") ? "" : <li>{prefix + data}</li> ;
+
+    return (
+        <Modal
+          show={props.show}
+          onHide={props.onHide}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+          className="my-modal"
+        >
+          <Modal.Header closeButton style={{backgroundColor: modalColor}}>
+            <Modal.Title id="contained-modal-title-vcenter">
+              {props.listing.businessName}
+            </Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+            <ul>
+              <li>Business type: {props.listing.businessType}</li>
+              {listIfNonEmpty("Email: ", props.listing.email)}
+              {listIfNonEmpty("Address: ", props.listing.address)}
+              {listIfNonEmpty("Address2: ", props.listing.address2)}
+              <li>City: {props.listing.city}</li>
+              <li>State: {props.listing.state}</li>
+              <li>Zip: {props.listing.zipcode}</li>
+              <li>Phone: {props.listing.phone}</li>
+            </ul>
+            <p>{props.listing.description}</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={props.onHide} style={{margin: "auto"}}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+      );
 }
  
 export default Home;
