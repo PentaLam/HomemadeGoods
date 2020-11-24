@@ -16,7 +16,7 @@ class ListingForm extends React.Component {
 		let fields = this.state;
 		let errors = {};
 		let isValid = true;
-		let nonEmptyFields = ["businessName","city","state","zipcode","description"];
+		let nonEmptyFields = ["businessName","businessType","city","state","zipcode","description"];
 
 		if(fields["businessName"] && !fields["businessName"].match(/^[a-zA-Z\s\']+$/)) {
 			isValid = false;
@@ -30,6 +30,14 @@ class ListingForm extends React.Component {
 			isValid = false;
 			errors["address2"] = "Invalid format (Numbers, letters, dashes, spaces only)";
 		}
+		if(fields["phone"] && !fields["phone"].match(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/)) {
+			isValid = false;
+			errors["phone"] = "Invalid format (Numbers, dashes, parentheses only)";
+		}
+		if(fields["email"] && !fields["email"].match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/)) {
+			isValid = false;
+			errors["email"] = "Invalid format (Numbers, letters, dashes, spaces only)";
+		}				
 		if(fields["city"] && !fields["city"].match(/^[a-zA-Z\s]+$/)) {
 			isValid = false;
 			errors["city"] = "Invalid format (Letters and spaces only)";
@@ -140,7 +148,7 @@ class ListingForm extends React.Component {
                         <Form.Control onChange={this.nameChange}/>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Business Type</Form.Label>
+                        <Form.Label>Business Type *</Form.Label>
                         <Form.Check
                             onChange={this.typeChange}
                             type="radio"

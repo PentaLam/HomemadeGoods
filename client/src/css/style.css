@@ -18,3 +18,13 @@
 	height: 400px;
 	position: relative;
  }
+ 
+#inner {
+  display: table;
+  margin: 0 auto;
+  border: 2px solid black;
+}
+
+#outer {
+  width:100%
+}
